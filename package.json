@@ -1,0 +1,37 @@
+{
+  "name": "madfi-protocol",
+  "version": "0.1.0",
+  "description": "Manage and monetize attention in web3",
+  "main": "index.js",
+  "scripts": {
+    "hardhat": "hardhat",
+    "compile": "hardhat clean && hardhat compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mad-finance/madfi-protocol-public"
+  },
+  "bugs": {
+    "url": "https://github.com/mad-finance/madfi-protocol-public/issues"
+  },
+  "homepage": "https://madfinance.xyz",
+  "devDependencies": {
+    "ethers": "5.5.1",
+    "hardhat": "2.7.0"
+  },
+  "dependencies": {
+    "@aave/lens-protocol": "^1.0.2",
+    "@openzeppelin/contracts": "4.5.0",
+    "@rari-capital/solmate": "^6.4.0",
+    "@superfluid-finance/ethereum-contracts": "^1.5.0"
+  },
+  "author": "Mad Finance",
+  "license": "MIT",
+  "keywords": [
+    "madfi",
+    "protocol",
+    "solidity",
+    "evm",
+    "contracts"
+  ]
+}
