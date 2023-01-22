@@ -20,6 +20,7 @@ interface IMadSBT {
 
   function mint(address, uint256, uint256) external returns (bool);
   function burn(uint256) external;
+  function handleRewardsUpdate(address, uint256, uint256, uint128) external;
 
   function creatorProfileId(uint256) external view returns (uint256);
   function totalSupply(uint256) external view returns (uint256);
