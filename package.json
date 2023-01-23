@@ -1,6 +1,6 @@
 {
   "name": "@madfi/protocol",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Manage and monetize attention in web3",
   "scripts": {
     "hardhat": "hardhat",
