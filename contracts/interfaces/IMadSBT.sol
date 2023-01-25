@@ -27,6 +27,8 @@ interface IMadSBT {
   function contractURI() external view returns (string memory);
   function balanceOf(address, uint256) external view returns (uint256);
   function rewardUnitsOf(address, uint256) external view returns (uint128);
+  function collectRewardUnit() external view returns(uint128);
+  function mintRewardUnit() external view returns(uint128);
 
   // direct mapping to struct CollectionData
   function collectionData(uint256) external view returns (
