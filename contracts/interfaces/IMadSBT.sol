@@ -13,7 +13,10 @@ interface IMadSBT {
     string uri; // metadata uri
   }
 
-  function createCollection(uint256, uint256, string memory) external returns (uint256);
+  event CreateCollection(address creator, uint256 profileId, uint256 collectionId, uint256 availableSupply);
+  event UpdateRewardUnits(uint256 collectionId, address subscriber, uint128 newUnits);
+
+  function createCollection(address, uint256, uint256, string memory) external returns (uint256);
 
   function mint(address, uint256, uint256) external returns (bool);
   function burn(uint256) external;
@@ -21,11 +24,8 @@ interface IMadSBT {
   function redeemInterimRewardUnits(uint256) external;
 
   function creatorProfileId(uint256) external view returns (uint256);
-  function totalSupply(uint256) external view returns (uint256);
-  function availableSupply(uint256) external view returns (uint256);
-  function uri(uint256) external view returns (string memory);
   function contractURI() external view returns (string memory);
-  function balanceOf(address, uint256) external view returns (uint256);
+  function hasMinted(address, uint256) external view returns (bool);
   function rewardUnitsOf(address, uint256) external view returns (uint128);
   function collectRewardUnit() external view returns(uint128);
   function mintRewardUnit() external view returns(uint128);
