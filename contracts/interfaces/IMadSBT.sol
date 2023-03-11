@@ -13,6 +13,14 @@ interface IMadSBT {
     string uri; // metadata uri
   }
 
+  enum Action {
+    CREATE_COLLECTION,
+    CREATE_BOUNTY,
+    ACCEPTED_BID,
+    MINTED_COLLECTION,
+    COLLECTED_BID_POST
+  }
+
   event CreateCollection(address creator, uint256 profileId, uint256 collectionId, uint256 availableSupply);
   event UpdateRewardUnits(uint256 collectionId, address subscriber, uint128 newUnits);
 
@@ -20,15 +28,14 @@ interface IMadSBT {
 
   function mint(address, uint256, uint256) external returns (bool);
   function burn(uint256) external;
-  function handleRewardsUpdate(address, uint256, uint256, uint128) external;
+  function handleRewardsUpdate(address, uint256, uint256, Action) external;
   function redeemInterimRewardUnits(uint256) external;
 
   function creatorProfileId(uint256) external view returns (uint256);
   function contractURI() external view returns (string memory);
   function hasMinted(address, uint256) external view returns (bool);
   function rewardUnitsOf(address, uint256) external view returns (uint128);
-  function collectRewardUnit() external view returns(uint128);
-  function mintRewardUnit() external view returns(uint128);
+
 
   // direct mapping to struct CollectionData
   function collectionData(uint256) external view returns (
@@ -38,4 +45,7 @@ interface IMadSBT {
     uint256,
     string memory
   );
+
+  function tokenToCollection(uint256) external view returns (uint256);
+  function actionToRewardUnits(Action) external view returns (uint128);
 }
