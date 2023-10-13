@@ -30,6 +30,7 @@ interface IMadSBT {
     function handleRewardsUpdate(address, uint256, uint8) external;
     function redeemInterimRewardUnits(uint256) external;
     function burnOnSubscriptionCanceled(uint256, address) external;
+    function distributeRewards(uint256 collectionId, uint256 totalAmount) external;
 
     function creatorProfileId(uint256) external view returns (uint256);
     function contractURI() external view returns (string memory);
