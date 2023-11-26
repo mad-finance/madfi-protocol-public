@@ -59,7 +59,7 @@ interface IMadSBT {
   event UpdateRewardUnits(uint256 collectionId, address subscriber, uint128 newUnits);
   event LinkWrappedCollection(address creator, uint256 profileId, uint256 collectionId, uint256 wrappedCollectionId);
 
-  function createCollection(address, uint256, uint256, string memory) external returns (uint256);
+  function createCollection(address, uint256, bytes calldata) external returns (uint256);
   function mint(address, uint256) external returns (uint256);
   function burn(uint256) external;
   function redeemInterimRewardUnits(uint256) external;
