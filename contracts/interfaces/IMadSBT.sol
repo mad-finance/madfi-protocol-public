@@ -59,6 +59,7 @@ interface IMadSBT {
   event UpdateRewardUnits(uint256 collectionId, address subscriber, uint128 newUnits);
   event LinkWrappedCollection(address creator, uint256 profileId, uint256 collectionId, uint256 wrappedCollectionId);
 
+  function collectionData(uint256) external view returns (uint,uint,uint,uint,uint,uint128,address,string memory,bool);
   function createCollection(address, uint256, bytes calldata) external returns (uint256);
   function mint(address, uint256) external returns (uint256);
   function burn(uint256) external;
@@ -72,7 +73,7 @@ interface IMadSBT {
   function hasMinted(address, uint256) external view returns (bool);
   function rewardUnitsOf(address, uint256) external view returns (uint128);
   function totalRewardUnits(uint256) external view returns (uint128);
-  function getLevel(uint256) external view returns (uint256);
+  function getLevel(uint256, uint256) external view returns (uint256);
   function getTokenLevel(uint256) external view returns (uint256);
   function totalMinted() external view returns (uint256);
   function subscriptionHandler() external view returns (address);
@@ -80,5 +81,4 @@ interface IMadSBT {
   function activeCollection(uint256) external view returns (uint256);
   function tokenToCollection(uint256) external view returns (uint256);
   function actionToRewardUnits(uint8) external view returns (uint128);
-  function lensHub() external view returns (address);
 }
