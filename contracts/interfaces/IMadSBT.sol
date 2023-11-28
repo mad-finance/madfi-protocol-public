@@ -81,4 +81,6 @@ interface IMadSBT {
   function activeCollection(uint256) external view returns (uint256);
   function tokenToCollection(uint256) external view returns (uint256);
   function actionToRewardUnits(uint8) external view returns (uint128);
+  function lensHub() external view returns (address);
+  function rewardsToken() external view returns (address);
 }
