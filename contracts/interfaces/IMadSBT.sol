@@ -69,6 +69,7 @@ interface IMadSBT {
   function batchRewardsUpdate(address[] calldata, uint256, uint8) external;
   function distributeRewards(uint256, uint256) external;
 
+  function ownerOf(uint256) external view returns (address);
   function contractURI() external view returns (string memory);
   function hasMinted(address, uint256) external view returns (bool);
   function rewardUnitsOf(address, uint256) external view returns (uint128);
