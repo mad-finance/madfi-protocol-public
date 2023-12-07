@@ -36,7 +36,9 @@ interface ISwapRouter {
     /// @param params The parameters necessary for the swap, encoded as `ExactOutputSingleParams` in calldata
     /// @return amountIn The necessary amount of the `tokenIn` token needed for the swap
     function exactOutputSingle(ExactOutputSingleParams calldata params) external payable returns (uint256 amountIn);
+}
 
+interface IQuoter {
     /// @notice Returns the amount in required to receive the given exact output amount but for a swap of a single pool
     /// @param tokenIn The token being swapped in
     /// @param tokenOut The token being swapped out

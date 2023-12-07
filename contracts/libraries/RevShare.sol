@@ -16,9 +16,9 @@ __/\\\\____________/\\\\_____/\\\\\\\\\_____/\\\\\\\\\\\\_____/\\\\\\\\\\\\\\\__
 
 pragma solidity ^0.8.10;
 
+import {ISwapRouter} from "../interfaces/IUniswap.sol";
 import "../interfaces/IERC20.sol";
 import "../interfaces/IMadSBT.sol";
-import "../interfaces/IUniswap.sol";
 import "../interfaces/ISuperToken.sol";
 
 library RevShare {
@@ -67,7 +67,6 @@ library RevShare {
      * @param amountInMaximum The maximum input amount of `tokenIn`
      * @param outputAmount The exact output amount desired of `tokenOut`
      * @param fee The fee for the pool to swap through
-     * @param doSanityCheck Validate whether the `amountInMaximum` covers the quoted amount
      * @return deltaAmountIn The delta between `amountInMaximum` and what was actually needed - to be refunded
      */
     function swapForExactOutputAmount(
@@ -76,15 +75,9 @@ library RevShare {
         address swapRouter,
         uint256 amountInMaximum,
         uint256 outputAmount,
-        uint24 fee,
-        bool doSanityCheck
+        uint24 fee
     ) public returns (uint256 deltaAmountIn) {
         ISwapRouter uniswapV3Router = ISwapRouter(swapRouter);
-
-        if (doSanityCheck) {
-            uint256 quotedAmountIn = uniswapV3Router.quoteExactOutputSingle(tokenIn, tokenOut, fee, outputAmount, 0);
-            if (amountInMaximum < quotedAmountIn) revert InsufficientAmountInForQuote();
-        }
 
         IERC20(tokenIn).approve(address(uniswapV3Router), amountInMaximum);
 
