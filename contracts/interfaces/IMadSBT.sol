@@ -16,6 +16,8 @@ __/\\\\____________/\\\\_____/\\\\\\\\\_____/\\\\\\\\\\\\_____/\\\\\\\\\\\\\\\__
 
 pragma solidity >=0.8.0;
 
+import "./ISuperToken.sol";
+
 interface IERC1155 {
   function balanceOf(address, uint256) external view returns (uint256);
 }
@@ -83,5 +85,5 @@ interface IMadSBT {
   function tokenToCollection(uint256) external view returns (uint256);
   function actionToRewardUnits(uint8) external view returns (uint128);
   function lensHub() external view returns (address);
-  function rewardsToken() external view returns (address);
+  function rewardsToken() external view returns (ISuperToken);
 }

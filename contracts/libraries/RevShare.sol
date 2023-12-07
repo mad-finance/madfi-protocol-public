@@ -41,8 +41,8 @@ library RevShare {
         address swapRouter,
         uint24 fee
     ) public {
-        address rewardsToken = madSBT.rewardsToken();
-        address underlying = ISuperToken(rewardsToken).getUnderlyingToken();
+        ISuperToken rewardsToken = madSBT.rewardsToken();
+        address underlying = rewardsToken.getUnderlyingToken();
 
         // check if token is underlying
         if (token != underlying) {
@@ -51,11 +51,11 @@ library RevShare {
         }
 
         // wrap as super usdc
-        IERC20(underlying).approve(rewardsToken, revShareAmount);
+        IERC20(underlying).approve(address(rewardsToken), revShareAmount);
         ISuperToken(rewardsToken).upgrade(revShareAmount);
 
         // instant distribution
-        IERC20(rewardsToken).approve(address(madSBT), revShareAmount);
+        IERC20(address(rewardsToken)).approve(address(madSBT), revShareAmount);
         madSBT.distributeRewards(collectionId, revShareAmount);
     }
 
