@@ -35,12 +35,11 @@ interface IMadSBT {
   }
 
   struct CollectionData {
-    uint256 startingTokenId; // first token id in this collection
     uint256 totalSupply; // total tokens minted for a given id
-    uint256 availableSupply; // total tokens available for a given id
+    uint256 availableSupply; // total tokens available for a given id (0 for no cap)
     uint256 totalRedeemed; // total tokens redeemed
     uint256 creatorId; // lens profile id, also the IDA index
-    uint128 totalInterimRewardUnits; // total reward units distributed before the reward token set
+    uint128 totalInterimRewardUnits; // total reward units distributed before minted badges
     address creatorAddress; // lens profile address
     string uri; // metadata uri
     bool isWrapped; // its a pointer to another collection
@@ -60,8 +59,9 @@ interface IMadSBT {
   event CreateWrappedCollection(address creator, uint256 profileId, uint256 collectionId);
   event UpdateRewardUnits(uint256 collectionId, address subscriber, uint128 newUnits);
   event LinkWrappedCollection(address creator, uint256 profileId, uint256 collectionId, uint256 wrappedCollectionId);
+  event SetCollectionVerifiedAddress(uint256 collectionId, address verifiedAddress, bool verified);
 
-  function collectionData(uint256) external view returns (uint,uint,uint,uint,uint,uint128,address,string memory,bool);
+  function collectionData(uint256) external view returns (uint,uint,uint,uint,uint128,address,string memory,bool);
   function createCollection(address, uint256, bytes calldata) external returns (uint256);
   function mint(address, uint256) external returns (uint256);
   function burn(uint256) external;
