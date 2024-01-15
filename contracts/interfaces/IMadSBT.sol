@@ -24,7 +24,7 @@ interface IERC1155 {
 
 /**
  * @notice IMadSBT interface
- * @dev It directly implements ERC721, and supports IERC1155#blaanceOf
+ * @dev It directly implements ERC721, and supports IERC1155#balanceOf
  */
 interface IMadSBT {
   struct WrappedCollectionData {
